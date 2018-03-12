@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "133910095747",
+    "firebase_url": "https://yabujava.firebaseio.com",
+    "project_id": "yabujava",
+    "storage_bucket": "yabujava.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:133910095747:android:024d153459ca0414",
+        "android_client_info": {
+          "package_name": "com.yabu.android.yabujava"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "133910095747-k2qbbpi908u7movmv72jbeb6vsksmfp4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.yabu.android.yabujava",
+            "certificate_hash": "06320382c20f8633ac0f58447d15edfb514682ca"
+          }
+        },
+        {
+          "client_id": "133910095747-siic5ljdev2cnrm7dhldcogesubr06j5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDbMNIxDubyuH2Rft2rncE9PdrCqVbpz28"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "133910095747-siic5ljdev2cnrm7dhldcogesubr06j5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

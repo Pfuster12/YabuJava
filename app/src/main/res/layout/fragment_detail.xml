@@ -1,0 +1,178 @@
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/detail_fragment_parent_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_height="@dimen/collapsing_app_bar_height"
+        android:layout_width="match_parent"
+        android:fitsSystemWindows="true">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:contentScrim="@color/colorPrimary"
+            app:titleEnabled="false">
+
+            <com.yabu.android.yabujava.ui.TopCropImageView
+                android:id="@+id/detail_thumbnail"
+                android:fitsSystemWindows="true"
+                android:contentDescription="@string/thumbnail_content_description"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:src="@drawable/ground_astronautmhdpi"
+                app:layout_collapseMode="parallax"/>
+
+            <!-- App-wide toolbar layout displayed at the top of screens. -->
+            <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/layout_toolbar"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/toolbar_height"
+                style="@style/ToolbarTheme"
+                app:layout_collapseMode="pin">
+
+                <TextView
+                    android:id="@+id/toolbar_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="@string/reading_page_title"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:layout_gravity="center"
+                    style="@style/ToolbarTitleStyle"/>
+            </android.support.v7.widget.Toolbar>
+        </android.support.design.widget.CollapsingToolbarLayout>
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/scroll_parent"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:fillViewport="true"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:id="@+id/text_parent_detail"
+            android:orientation="vertical"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:paddingStart="@dimen/detail_text_padding"
+            android:paddingEnd="@dimen/detail_text_padding">
+
+            <TextView
+                android:id="@+id/wiki_article_heading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/article_heading_detail"
+                style="@style/PoweredJaStyle"
+                android:paddingTop="20dp"
+                android:paddingStart="24dp"
+                android:paddingEnd="16dp"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/color700Grey"
+                android:layout_marginTop="6dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="48dp"/>
+
+            <FrameLayout
+                android:id="@+id/furigana_parent"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <include
+                    android:id="@+id/callout_bubble"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    layout="@layout/callout_bubble"
+                    android:visibility="gone"/>
+
+                <include
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    layout="@layout/callout_bubble_loading"
+                    android:visibility="invisible"/>
+
+                <LinearLayout
+                    android:id="@+id/detail_text_parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent">
+
+                    <TextView
+                        android:id="@+id/detail_title"
+                        android:padding="16dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        tools:text="Testing Details Fragment"
+                        style="@style/ExtractTitleStyleDetail" />
+
+                    <TextView
+                        android:id="@+id/detail_extract"
+                        android:layout_height="match_parent"
+                        android:layout_width="wrap_content"
+                        android:textColorLink="@color/colorDarkAccent"
+                        android:paddingTop="16dp"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"
+                        android:paddingBottom="32dp"
+                        android:textIsSelectable="true"
+                        tools:text="Testing Details Fragment but heyo why don't you tell me something."
+                        style="@style/ExtractTextStyleDetail" />
+
+                    <View
+                        android:id="@+id/detail_padding_bottom"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:visibility="gone"/>
+                </LinearLayout>
+            </FrameLayout>
+
+            <!-- this sits at the bottom of the ScrollView,
+            getting pushed out of view if the ScrollView's
+            content is tall enough -->
+            <TextView
+                android:id="@+id/read_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/read_that_button"
+                style="@style/StartUpDescriptionTextStyle"
+                android:layout_marginTop="8dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:layout_marginBottom="@dimen/read_button_bottom_margin"
+                android:layout_gravity="center"
+                android:background="@drawable/tag_stroke"/>
+
+            <ImageView
+                android:contentDescription="@string/yabu_astronaut"
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:src="@drawable/ground_astronautmhdpi"/>
+
+            <include
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                layout="@layout/footer_powered" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="46dp"/>
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+</android.support.design.widget.CoordinatorLayout>

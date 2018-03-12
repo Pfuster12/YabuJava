@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Collapsing app bar height in detail screen -->
+    <dimen name="collapsing_app_bar_height">600dp</dimen>
+    <!-- Bottom sheet peek dimen -->
+    <dimen name="bottom_sheet_peek">720dp</dimen>
+    <!-- Margin between image and top -->
+    <dimen name="start_up_image_margin_top">160dp</dimen>
+    <!-- read that button margin bottom -->
+    <dimen name="astronaut_top">180dp</dimen>
+    <!-- Bottom sheet peek dimen -->
+    <dimen name="line_chart_height">460dp</dimen>
+    <!-- List image item -->
+    <dimen name="wiki_image_item">440dp</dimen>
+    <!-- List image item -->
+    <dimen name="detail_text_padding">96dp</dimen>
+    <!-- read that button margin bottom -->
+    <dimen name="info_padding_top">400dp</dimen>
+    <dimen name="info_padding_top_2">400dp</dimen>
+    <!-- read that button margin bottom -->
+    <dimen name="read_button_bottom_margin">60dp</dimen>
+</resources>

@@ -1,0 +1,160 @@
+<resources>
+    <string name="app_name" translatable="false">Yabu</string>
+
+    <!-- Start up activity -->
+
+    <!-- Start up description -->
+    <string name="start_up_description">Read Japanese text, open-source.</string>
+    <!-- Start up Sign Up -->
+    <string name="start_up_sign_up">Sign up</string>
+    <!-- Start up Continue without Sign Up -->
+    <string name="start_up_continue_no_sign">Click here to continue&#8230;</string>
+
+    <!-- Main activity -->
+
+    <!-- Main screens tool bar titles -->
+    <string name="reading_page_title">Reading</string>
+    <string name="review_words_page_title">Review Words</string>
+    <string name="your_stats_page_title">Your Stats</string>
+
+    <string name="no_connection_big">Oh no! We lost you.</string>
+    <string name="no_connection_big_ja">だめ! 私たちあなたを失った。</string>
+    <string name="no_connection_detail">Looks like there is no Internet Connection. Try turning it on and swipe to refresh.</string>
+
+    <!-- Detail fragment -->
+
+    <!-- Powered by text -->
+    <string name="read_that_button">I read that!</string>
+    <!-- Powered by text -->
+    <string name="read_that_button_false">Oops! I did not read that.</string>
+
+    <!-- Main screens tool bar titles -->
+    <string name="no_definition">No definition available</string>
+
+    <!-- Main screens tool bar titles -->
+    <string name="no_extract_text">Oh no! There is no text.</string>
+
+    <!-- Tag for the bottom sheet fragment -->
+    <string name="bottom_sheet_fragment_tag">Bottom Sheet Fragment</string>
+    <string name="bottom_sheet_toolbar_title_prefix">Read about %1$s</string>
+
+    <!-- Powered by text -->
+    <string name="powered_by">Powered by open-source awesomeness</string>
+    <!-- Powered by text -->
+    <string name="powered_by_ja" translatable="false">素晴らしい~オープン・ソースで動く</string>
+
+    <!-- Common tag-->
+    <string name="common_tag" translatable="false">common</string>
+
+    <!-- JLPT N1 text-->
+    <string name="JLPTN1" translatable="false">JLPT N1</string>
+    <!-- JLPT N2 text-->
+    <string name="JLPTN2" translatable="false">JLPT N2</string>
+    <!-- JLPT N3 text-->
+    <string name="JLPTN3" translatable="false">JLPT N3</string>
+    <!-- JLPT N4 text-->
+    <string name="JLPTN4" translatable="false">JLPT N4</string>
+    <!-- JLPT N5 text-->
+    <string name="JLPTN5" translatable="false">JLPT N5</string>
+
+    <!-- Jisho link text callout-->
+    <string name="callout_link_details"><u>more&#8230;</u></string>
+
+    <!-- Definition 1 placeholder text -->
+    <string name="definition_1_placeholder">1. %1$s</string>
+
+    <!-- Definition 2 placeholder text -->
+    <string name="definition_2_placeholder">2. %1$s</string>
+
+    <!-- Definition 2 placeholder text -->
+    <string name="undo_snackbar">UNDO</string>
+
+    <!-- Definition 2 placeholder text -->
+    <string name="snackbar_word_placeholder">%1$s removed.</string>
+
+    <!-- Review Words Fragment -->
+
+    <!-- Save words text -->
+    <string name="footer_save_words">Save review words here</string>
+
+    <!-- Save words text -->
+    <string name="no_words_save_words">Save review words to study again.</string>
+
+    <!-- Save words text -->
+    <string name="no_words_big">There doesn\'t seem to be anything here&#8230;</string>
+
+    <!--User Fragment-->
+
+    <!-- User footer -->
+    <string name="footer_user_stats">User stats. Keep breaking barriers!</string>
+
+    <!-- Articles read title stats -->
+    <string name="article_user_stats_title">Wikis read this week</string>
+
+    <!-- Articles read title stats -->
+    <string name="article_heading_detail">Wiki Article</string>
+
+    <!-- Pie chart review words -->
+    <string name="review_user_stats_title">Review words overview</string>
+
+    <!-- Pie chart review words -->
+    <string name="info_title_1">大学</string>
+
+    <!-- Widget -->
+    <!-- Content description for no connection -->
+    <string name="empy_data_widget">No words to display</string>
+
+    <!-- Content Descriptions -->
+
+    <!-- Content description for favorite button -->
+    <string name="callout_favorite_button_content_description">Save to Review Words</string>
+    <!-- Content description for list_item_thumbnail -->
+    <string name="delete_review_word_content_description">Delete review word.</string>
+    <!-- Content description for night mode -->
+    <string name="night_mode_content_description">Enable/Disable night mode</string>
+    <!-- Content description for list_item_thumbnail -->
+    <string name="thumbnail_content_description">Extract thumbnail</string>
+    <!-- Content description for yabu astronaut image -->
+    <string name="yabu_astronaut">Yabu astronaut</string>
+    <!-- Content description for no connection -->
+    <string name="no_connection_content_description">No connection image</string>
+
+    <!--Info Start up Screens-->
+    <!--SKIP Text for info screens-->
+    <string name="info_skip_text">SKIP</string>
+    <string name="info_start_reading_text">START READING</string>
+
+    <!--Info example title-->
+    <string name="info_title_2">オープンソース</string>
+    <!--Info example title-->
+    <string name="info_body_1">日本の現在の学校教育制度では、高等学校もしくは中等教育学校卒業者、通常の課程による12年の特別教育を修了した者、またはこれと同等以上の</string>
+
+    <!--Info screen 1-->
+    <string name="info_screen_text_1">Read new Wiki articles from the daily page.</string>
+
+    <!--Info screen text 2-->
+    <string name="info_screen_text_2">Switch on night mode for easier reading on the eyes.</string>
+    <!--Info example title-->
+    <string name="info_body_2">オープンソース (open source) とは、言葉通りにはソースコードを公開することと理解できる。Open Source Initiative は、「オープンソース」と名乗るための要件を定義している（後述）</string>
+    <!--Info example title-->
+    <string name="info_body_callout_text">オープンソース (open source) とは、言葉通りにはソースコードを公開することと理解できる。Open Source Initiative は、「オープンソース」と名乗るための要件を定義している（後述）。
+1998年2月3日に、パロアルトにおいて、Netscapeブラウザのソースコードをどのような形で公開していくかという戦略会議の中でつけられた新たな用語である[1]。またオープンソースに関する本 "Open Sources: Voices from the Open Source Revolution" にも、マーケット向けのプロモーション用語として使う新しい言葉“オープンソース”を作り出したとある。</string>
+    <string name="info_callout_word">後述</string>
+    <string name="info_callout_reading">こうじゅつ</string>
+    <string name="info_callout_definition_1">1. mentioning later</string>
+    <string name="info_callout_definition_2">2. as described below</string>
+
+    <!-- refresh text button reading fragment sw600 -->
+    <string name="refresh_text_sw600">Refresh Articles</string>
+
+    <!--screen text 3-->
+    <string name="info_screen_text_3">See Kanji readings and definitions while reading a tap away.</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
+
+    <!-- Attributions -->
+
+</resources>

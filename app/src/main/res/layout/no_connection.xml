@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/reading_no_connection_image"
+        android:contentDescription="@string/no_connection_content_description"
+        android:layout_width="match_parent"
+        android:layout_marginTop="72dp"
+        android:layout_height="160dp"
+        android:src="@drawable/ic_astronaut_no_connection" />
+
+    <TextView
+        android:id="@+id/reading_no_connection_big_ja"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/no_connection_big_ja"
+        style="@style/NoConnectionBigTextStyleJa"
+        android:padding="16dp"
+        android:gravity="center" />
+
+    <TextView
+        android:id="@+id/reading_no_connection_big"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/no_connection_big"
+        style="@style/NoConnectionBigTextStyle"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="4dp"
+        android:paddingBottom="16dp"
+        android:gravity="center" />
+
+    <TextView
+        android:id="@+id/reading_no_connection_detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/no_connection_detail"
+        style="@style/NoConnectionDetailTextStyle"
+        android:paddingStart="36dp"
+        android:paddingEnd="36dp"
+        android:gravity="center"
+        android:alpha="0"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="36dp"/>
+</LinearLayout>

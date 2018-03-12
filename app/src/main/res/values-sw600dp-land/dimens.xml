@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- List image item -->
+    <dimen name="wiki_image_item">144dp</dimen>
+    <!-- read that button margin bottom -->
+    <dimen name="astronaut_top">120dp</dimen>
+    <!-- read that button margin bottom -->
+    <dimen name="info_padding_top">200dp</dimen>
+    <dimen name="info_padding_top_2">200dp</dimen>
+</resources>

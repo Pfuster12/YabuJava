@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list android:id="@+id/flying_astronaut_start_up"
+    android:oneshot="false"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:drawable="@drawable/ic_astronaut_flying2" android:duration="20"
+        android:variablePadding="true"/>
+    <item android:drawable="@drawable/ic_astronaut_flying3" android:duration="140"
+        android:variablePadding="true"/>
+    <item android:drawable="@drawable/ic_astronaut_flying4" android:duration="140"
+        android:variablePadding="true"/>
+    <item android:drawable="@drawable/ic_astronaut_flying5" android:duration="140"
+        android:variablePadding="true"/>
+    <item android:drawable="@drawable/ic_astronaut_flying6" android:duration="140"
+        android:variablePadding="true"/>
+    <item android:drawable="@drawable/ic_astronaut_flying7" android:duration="150"
+        android:variablePadding="true"/>
+    <item android:drawable="@drawable/ic_astronaut_flying8" android:duration="150"
+        android:variablePadding="true"/>
+    <item android:drawable="@drawable/ic_astronaut_flying9" android:duration="150"
+        android:variablePadding="true"/>
+    <item android:drawable="@drawable/ic_astronaut_flying8" android:duration="150"
+        android:variablePadding="true"/>
+    <item android:drawable="@drawable/ic_astronaut_flying7" android:duration="140"
+        android:variablePadding="true"/>
+    <item android:drawable="@drawable/ic_astronaut_flying6" android:duration="140"
+        android:variablePadding="true"/>
+    <item android:drawable="@drawable/ic_astronaut_flying5" android:duration="140"
+        android:variablePadding="true"/>
+    <item android:drawable="@drawable/ic_astronaut_flying4" android:duration="130"
+        android:variablePadding="true"/>
+    <item android:drawable="@drawable/ic_astronaut_flying3" android:duration="120"
+        android:variablePadding="true"/>
+    <item android:drawable="@drawable/ic_astronaut_flying4" android:duration="120"
+        android:variablePadding="true"/>
+    <item android:drawable="@drawable/ic_astronaut_flying5" android:duration="120"
+        android:variablePadding="true"/>
+    <item android:drawable="@drawable/ic_astronaut_flying6" android:duration="120"
+        android:variablePadding="true"/>
+    <item android:drawable="@drawable/ic_astronaut_flying7" android:duration="110"
+        android:variablePadding="true"/>
+    <item android:drawable="@drawable/ic_astronaut_flying8" android:duration="100"
+        android:variablePadding="true"/>
+    <item android:drawable="@drawable/ic_astronaut_flying9" android:duration="100"
+        android:variablePadding="true"/>
+    <item android:drawable="@drawable/ic_astronaut_flying8" android:duration="100"
+        android:variablePadding="true"/>
+    <item android:drawable="@drawable/ic_astronaut_flying7" android:duration="100"
+        android:variablePadding="true"/>
+    <item android:drawable="@drawable/ic_astronaut_flying6" android:duration="100"
+        android:variablePadding="true"/>
+    <item android:drawable="@drawable/ic_astronaut_flying5" android:duration="100"
+        android:variablePadding="true"/>
+    <item android:drawable="@drawable/ic_astronaut_flying4" android:duration="100"
+        android:variablePadding="true"/>
+    <item android:drawable="@drawable/ic_astronaut_flying3" android:duration="100"
+        android:variablePadding="true"/>
+    <item android:drawable="@drawable/ic_astronaut_flying2" android:duration="110"
+        android:variablePadding="true"/>
+</animation-list>

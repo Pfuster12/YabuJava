@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/info_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/colorDarkBackground"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/info_padding_top"
+            android:orientation="vertical"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:src="@drawable/ic_astronaut_flying1"
+                android:background="@color/colorDarkBackground"/>
+
+            <TextView
+                android:id="@+id/detail_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="36dp"
+                android:paddingBottom="16dp"
+                android:paddingStart="56dp"
+                android:paddingEnd="42dp"
+                android:text="@string/info_title_2"
+                style="@style/ExtractTitleStyleDetail"
+                android:textColor="@color/colorTextWhite"
+                android:textSize="18sp"/>
+
+            <TextView
+                android:id="@+id/detail_extract"
+                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:textColorLink="@color/colorDarkAccent"
+                android:paddingStart="56dp"
+                android:paddingEnd="58dp"
+                android:paddingTop="16dp"
+                android:paddingBottom="32dp"
+                android:text="@string/info_body_2"
+                style="@style/ExtractTextStyleDetail"
+                android:textColor="@color/colorTextWhite"
+                android:textSize="12sp"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_alignParentBottom="true"
+        android:text="@string/info_screen_text_2"
+        style="@style/PoweredJaStyle"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:textColor="@color/color100Grey"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/shape_scrim"/>
+</RelativeLayout>
+

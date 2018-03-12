@@ -1,0 +1,74 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context="com.yabu.android.yabu.ui.ReadingFragment">
+
+    <include
+        android:id="@+id/review_layout_toolbar"
+        layout="@layout/toolbar" />
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/review_swipe_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/review_recycler_parent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/review_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <LinearLayout
+                android:id="@+id/review_no_words"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintVertical_bias="0.4"
+                android:orientation="vertical"
+                android:alpha="0">
+
+                <ImageView
+                    android:id="@+id/review_no_words_image"
+                    android:contentDescription="@string/no_connection_content_description"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="72dp"
+                    android:layout_height="160dp"
+                    android:src="@drawable/ic_astronaut_no_connection" />
+
+                <TextView
+                    android:id="@+id/review_no_words_big"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/no_words_big"
+                    style="@style/NoConnectionBigTextStyle"
+                    android:paddingTop="4dp"
+                    android:paddingBottom="16dp"
+                    android:gravity="center" />
+
+                <TextView
+                    android:id="@+id/review_no_words_detail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/no_words_save_words"
+                    style="@style/NoConnectionDetailTextStyle"
+                    android:paddingStart="36dp"
+                    android:paddingEnd="36dp"
+                    android:gravity="center" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp"/>
+            </LinearLayout>
+        </android.support.constraint.ConstraintLayout>
+    </android.support.v4.widget.SwipeRefreshLayout>
+</LinearLayout>

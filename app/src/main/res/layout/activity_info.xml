@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/info_viewpager"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:overScrollMode="never"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/tab_circles"
+        android:layout_weight="1"/>
+
+    <LinearLayout
+        android:id="@+id/tab_circles"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="56dp"
+        android:paddingTop="24dp"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/info_viewpager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_weight="1">
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <View
+                android:id="@+id/dot_page_0"
+                android:layout_width="6dp"
+                android:layout_height="6dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/grey_500_circle"/>
+
+            <View
+                android:id="@+id/dot_page_0_accent"
+                android:layout_width="8dp"
+                android:layout_height="8dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/accent_circle"
+                android:visibility="invisible"/>
+        </FrameLayout>
+
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <View
+                android:id="@+id/dot_page_1"
+                android:layout_width="6dp"
+                android:layout_height="6dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/grey_500_circle"/>
+
+            <View
+                android:id="@+id/dot_page_1_accent"
+                android:layout_width="8dp"
+                android:layout_height="8dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/accent_circle"
+                android:visibility="invisible"/>
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <View
+                android:id="@+id/dot_page_2"
+                android:layout_width="6dp"
+                android:layout_height="6dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/grey_500_circle"/>
+
+            <View
+                android:id="@+id/dot_page_2_accent"
+                android:layout_width="8dp"
+                android:layout_height="8dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/accent_circle"
+                android:visibility="invisible"/>
+        </FrameLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/info_skip_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="24dp"
+        android:layout_alignParentBottom="true"
+        android:gravity="end"
+        style="@style/PoweredJaStyle"
+        android:text="@string/info_skip_text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/info_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        android:paddingTop="60dp"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            >
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/info_image_1"
+                android:layout_width="220dp"
+                android:layout_height="64dp"
+                android:layout_marginStart="42dp"
+                android:layout_marginTop="@dimen/list_item_vertical_margin"
+                app:cardCornerRadius="4dp"
+                android:translationX="4dp">
+
+                <ImageView
+                    android:id="@+id/list_item_thumbnail_info_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_astronaut_no_connection"
+                    android:scaleType="fitCenter"/>
+            </android.support.v7.widget.CardView>
+
+            <TextView
+                android:id="@+id/list_item_title_info_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="42dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:maxLines="2"
+                android:ellipsize="end"
+                android:textSize="16sp"
+                android:text="@string/info_title_1"
+                style="@style/ExtractTitleStyleListItem" />
+
+            <TextView
+                android:id="@+id/list_item_extract_info_1"
+                android:layout_width="220dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="42dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="16dp"
+                android:paddingBottom="@dimen/list_item_vertical_margin"
+                android:text="@string/info_body_1"
+                style="@style/ExtractTextStyleListItem"
+                android:textColor="@color/color500Grey"
+                android:textSize="8sp"
+                android:maxLines="2" />
+        </LinearLayout>
+
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools">
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/info_image_2"
+                android:layout_width="220dp"
+                android:layout_height="64dp"
+                android:layout_marginStart="42dp"
+                android:layout_marginTop="@dimen/list_item_vertical_margin"
+                app:cardCornerRadius="4dp"
+                android:translationX="4dp">
+
+                <ImageView
+                    android:id="@+id/list_item_thumbnail_info_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_astronaut_flying1"
+                    android:scaleType="fitCenter"/>
+            </android.support.v7.widget.CardView>
+
+            <TextView
+                android:id="@+id/list_item_title_info_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="42dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:maxLines="2"
+                android:ellipsize="end"
+                android:textSize="16sp"
+                android:text="@string/info_title_2"
+                style="@style/ExtractTitleStyleListItem" />
+
+            <TextView
+                android:id="@+id/list_item_extract_info_2"
+                android:layout_width="220dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="42dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="16dp"
+                android:paddingBottom="@dimen/list_item_vertical_margin"
+                android:text="@string/info_body_2"
+                style="@style/ExtractTextStyleListItem"
+                android:textColor="@color/color500Grey"
+                android:textSize="8sp"
+                android:maxLines="2" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_alignParentBottom="true"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:text="@string/info_screen_text_1"
+        style="@style/PoweredJaStyle"
+        android:textColor="@color/color100Grey"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/shape_scrim"/>
+</RelativeLayout>
+

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/review_item_foreground"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:elevation="2dp"
+    android:background="@color/colorBackground">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="24dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="4dp">
+
+        <TextView
+            android:id="@+id/review_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Word"
+            style="@style/WordTitleStyleCallout"
+            android:layout_gravity="end"/>
+
+        <ImageView
+            android:contentDescription="@string/delete_review_word_content_description"
+            android:id="@+id/review_delete_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_delete_sweep_black_24px"
+            android:tint="@color/color700Grey"
+            android:layout_alignParentEnd="true"/>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/review_reading"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="2dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="reading and other stuff that make it bigger"
+        style="@style/PoweredJaStyle"
+        android:maxLines="1"
+        android:ellipsize="end"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="end"
+        android:paddingBottom="8dp">
+
+        <TextView
+            android:id="@+id/review_common_tag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/common_tag"
+            style="@style/TagStyle"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/tag"
+            android:layout_gravity="end"
+            android:backgroundTint="@color/colorAccent"/>
+
+        <TextView
+            android:id="@+id/review_jlpt_tag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/JLPTN5"
+            style="@style/TagStyle"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/tag"
+            android:layout_gravity="end"
+            android:backgroundTint="@color/colorJLPTN5"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/review_definition_1"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="4dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="1. This is the definition"
+        android:maxLines="2"
+        android:ellipsize="end"
+        style="@style/PoweredJaStyle" />
+
+    <TextView
+        android:id="@+id/review_definition_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        tools:text="2. A second one"
+        android:maxWidth="220dp"
+        android:maxLines="2"
+        android:ellipsize="end"
+        style="@style/PoweredJaStyle" />
+
+    <TextView
+        android:id="@+id/review_details_link"
+        android:paddingEnd="20dp"
+        android:paddingTop="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:text="@string/callout_link_details"
+        style="@style/PoweredJaStyle"
+        android:textColor="@color/colorAccent" />
+
+    <View
+        android:id="@+id/grey_line_divider"
+        android:layout_marginTop="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/color700Grey" />
+</LinearLayout>

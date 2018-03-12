@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Start Up No sign in continue text -->
+    <style name="StartUpDescriptionTextStyle">
+        <item name="android:textSize">18sp</item>
+        <item name="android:letterSpacing">0.05</item>
+        <item name="android:textColor">@color/colorTextWhite</item>
+        <item name="android:fontFamily">@font/caveatbrush_regular</item>
+    </style>
+
+    <!-- Start Up No sign in continue text -->
+    <style name="StartUpContinueTextStyle">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/color700Grey</item>
+    </style>
+
+    <!--Extract title style in list item view-->
+    <style name="ExtractTitleStyleListItem" parent="Base.TextAppearance.AppCompat.Headline">
+        <item name="android:letterSpacing">0.05</item>
+        <item name="android:textColor">@color/colorTextWhite</item>
+        <item name="android:lineSpacingMultiplier">1.5</item>
+    </style>
+
+    <!--Extract title style in detail view-->
+    <style name="ExtractTitleStyleDetail" parent="ExtractTitleStyleListItem">
+        <item name="android:textStyle">bold</item>
+        <item name="android:lineSpacingMultiplier">1.5</item>
+    </style>
+
+    <!--Extract text style in detail view-->
+    <style name="ExtractTextStyleDetail" parent="Base.TextAppearance.AppCompat.Medium">
+        <item name="android:textSize">21sp</item>
+        <item name="android:letterSpacing">0.05</item>
+        <item name="android:textColor">@color/colorTextWhite</item>
+        <item name="android:lineSpacingMultiplier">2.2</item>
+    </style>
+
+    <!--Extract text style in detail view-->
+    <style name="ExtractTextStyleListItem" parent="Base.TextAppearance.AppCompat.Caption">
+        <item name="android:letterSpacing">0.05</item>
+        <item name="android:textColor">@color/colorTextWhite</item>
+        <item name="android:lineSpacingMultiplier">2</item>
+    </style>
+
+    <!--Powered by japanese text-->
+    <style name="PoweredJaStyle" parent="Base.TextAppearance.AppCompat.Caption">
+        <item name="android:letterSpacing">0.05</item>
+        <item name="android:textColor">@color/colorTextWhite</item>
+    </style>
+
+    <!--Furigana text style-->
+    <style name="FuriganaStyle" parent="Base.TextAppearance.AppCompat.Caption">
+        <item name="android:letterSpacing">0.05</item>
+        <item name="android:textColor">@color/color700Grey</item>
+    </style>
+
+    <!--JLPT text-->
+    <style name="TagStyle" parent="Base.TextAppearance.AppCompat.Caption">
+        <item name="android:letterSpacing">0.05</item>
+        <item name="android:textColor">@color/colorTextWhite</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:paddingStart">4dp</item>
+        <item name="android:paddingEnd">4dp</item>
+        <item name="android:paddingTop">4dp</item>
+        <item name="android:paddingBottom">4dp</item>
+        <item name="android:textSize">8sp</item>
+    </style>
+
+    <!--Callout bubble style-->
+    <style name="CalloutBubbleStyle">
+        <item name="android:minHeight">100dp</item>
+        <item name="android:minWidth">140dp</item>
+        <item name="android:maxWidth">260dp</item>
+    </style>
+
+    <!--Extract title style in detail view-->
+    <style name="WordTitleStyleCallout" parent="Base.TextAppearance.AppCompat.Medium">
+        <item name="android:textStyle">bold</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:letterSpacing">0.05</item>
+        <item name="android:textColor">@color/colorTextWhite</item>
+    </style>
+
+    <!-- No connection text style -->
+    <style name="NoConnectionBigTextStyle">
+        <item name="android:textSize">18sp</item>
+        <item name="android:letterSpacing">0.05</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">@color/colorTextWhite</item>
+        <item name="android:fontFamily">@font/caveatbrush_regular</item>
+    </style>
+
+    <!-- No connection text style Japanese -->
+    <style name="NoConnectionBigTextStyleJa">
+        <item name="android:textSize">20sp</item>
+        <item name="android:letterSpacing">0.05</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">@color/colorTextWhite</item>
+    </style>
+
+    <!-- No connection text style -->
+    <style name="NoConnectionDetailTextStyle">
+        <item name="android:textSize">12sp</item>
+        <item name="android:letterSpacing">0.05</item>
+        <item name="android:textColor">@color/colorTextWhite</item>
+    </style>
+</resources>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- App-wide toolbar layout displayed at the top of screens. -->
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/toolbar"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/toolbar_height"
+    style="@style/ToolbarTheme">
+
+    <TextView
+        android:id="@+id/toolbar_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="@string/reading_page_title"
+        android:layout_gravity="center"
+        style="@style/ToolbarTitleStyle"/>
+
+    <ImageView
+        android:contentDescription="@string/night_mode_content_description"
+        android:id="@+id/night_mode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        tools:text="@string/reading_page_title"
+        android:layout_gravity="end"
+        android:src="@drawable/night_mode_button"
+        android:tint="@color/color100Grey"/>
+</android.support.v7.widget.Toolbar>

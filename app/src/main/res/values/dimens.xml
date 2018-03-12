@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Dimensions for phone-sized devices-->
+<resources>
+    <!-- App bar height in every screen, showing titles -->
+    <dimen name="toolbar_height">46dp</dimen>
+    <!-- Collapsing app bar height in detail screen -->
+    <dimen name="collapsing_app_bar_height">300dp</dimen>
+    <!-- Margin between titles in Start-Up screen -->
+    <dimen name="start_up_title_margin_top">60dp</dimen>
+    <!-- Margin between titles in Start-Up screen -->
+    <dimen name="start_up_titles_margin_top">36dp</dimen>
+    <!-- Margin between image and top -->
+    <dimen name="start_up_image_margin_top">82dp</dimen>
+    <!-- End Margin between astronaut logo -->
+    <dimen name="start_up_image_end_margin">120dp</dimen>
+    <!-- read that button margin bottom -->
+    <dimen name="astronaut_top">24dp</dimen>
+    <!-- read that button margin bottom -->
+    <dimen name="info_padding_top">0dp</dimen>
+    <!-- read that button margin bottom -->
+    <dimen name="info_padding_top_2">40dp</dimen>
+    <!-- End Margin between astronaut logo -->
+    <dimen name="list_item_vertical_margin">16dp</dimen>
+
+    <!-- Bottom sheet peek dimen -->
+    <dimen name="bottom_sheet_peek">400dp</dimen>
+
+    <!-- Bottom sheet peek dimen -->
+    <dimen name="line_chart_height">260dp</dimen>
+
+    <!-- List image item -->
+    <dimen name="wiki_image_item">144dp</dimen>
+
+    <!-- List image item -->
+    <dimen name="detail_text_padding">0dp</dimen>
+
+    <!-- read that button margin bottom -->
+    <dimen name="read_button_bottom_margin">8dp</dimen>
+
+    <!--
+Refer to App Widget Documentation for margin information
+http://developer.android.com/guide/topics/appwidgets/index.html#CreatingLayout
+    -->
+    <dimen name="widget_margin">8dp</dimen>
+</resources>

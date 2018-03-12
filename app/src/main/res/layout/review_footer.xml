@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <View
+        android:id="@+id/grey_100_circle_review"
+        android:layout_marginTop="16dp"
+        android:layout_width="9dp"
+        android:layout_height="9dp"
+        android:layout_gravity="center"
+        android:background="@drawable/grey_300_circle" />
+
+
+    <View
+        android:id="@+id/grey_300_circle_review"
+        android:layout_marginTop="16dp"
+        android:layout_width="6dp"
+        android:layout_height="6dp"
+        android:layout_gravity="center"
+        android:background="@drawable/grey_500_circle" />
+
+
+    <View
+        android:id="@+id/grey_500_circle_review"
+        android:layout_marginTop="16dp"
+        android:layout_width="3dp"
+        android:layout_height="3dp"
+        android:layout_gravity="center"
+        android:background="@drawable/accent_circle" />
+
+    <TextView
+        android:id="@+id/review_info_text"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:text="@string/footer_save_words"
+        style="@style/PoweredJaStyle"
+        android:paddingTop="24dp"
+        android:paddingBottom="16dp" />
+
+    <ImageView
+        android:id="@+id/review_footer_graphic"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:src="@drawable/ground_astronautmhdpi"/>
+
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        layout="@layout/footer_powered" />
+</LinearLayout>

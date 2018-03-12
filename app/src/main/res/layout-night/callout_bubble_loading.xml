@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/callout_bubble_loading"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/ic_callout_bubble_middle_shadow"
+    android:backgroundTint="@color/color300Grey"
+    android:orientation="vertical"
+    style="@style/CalloutBubbleStyle"
+    android:minWidth="42dp"
+    android:minHeight="42dp"
+    android:elevation="4dp">
+
+    <ProgressBar
+        android:id="@+id/callout_loading_spinner"
+        android:layout_marginTop="6dp"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_gravity="center"/>
+</LinearLayout>

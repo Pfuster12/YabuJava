@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Grey gradient scheme -->
+    <color name="colorDarkBackground">#1A1A1A</color>
+    <color name="colorPrimaryDark">@color/colorDarkBackground</color>
+    <!-- Background color -->
+    <color name="colorBackground">@color/colorDarkBackground</color>
+    <color name="colorTabUnselected">@color/colorTextWhite</color>
+</resources>

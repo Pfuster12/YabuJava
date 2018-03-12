@@ -1,0 +1,6 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:exitFadeDuration="@android:integer/config_shortAnimTime"
+    android:enterFadeDuration="@android:integer/config_shortAnimTime">
+    <item android:state_selected="true" android:drawable="@drawable/ic_star_black_24px" />
+    <item android:drawable="@drawable/ic_star_border_black_24px" />
+</selector>

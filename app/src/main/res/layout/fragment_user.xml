@@ -1,0 +1,128 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/user_layout_toolbar"
+        layout="@layout/toolbar" />
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            tools:context="com.yabu.android.yabu.ui.ReviewWordsFragment">
+
+            <TextView
+                android:id="@+id/user_chart_articles"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/article_user_stats_title"
+                style="@style/PoweredJaStyle"
+                android:paddingTop="24dp"
+                android:paddingStart="24dp"
+                android:paddingEnd="16dp"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/color700Grey"
+                android:layout_marginTop="6dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="48dp"/>
+
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/chart"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/line_chart_height"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"/>
+
+            <TextView
+                android:id="@+id/user_chart_review_words"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/review_user_stats_title"
+                style="@style/PoweredJaStyle"
+                android:paddingTop="24dp"
+                android:paddingStart="24dp"
+                android:paddingEnd="16dp"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/color700Grey"
+                android:layout_marginTop="6dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="48dp"/>
+
+            <com.github.mikephil.charting.charts.PieChart
+                android:id="@+id/pie_chart"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:alpha="0.8"/>
+
+            <View
+                android:id="@+id/grey_100_circle_review"
+                android:layout_marginTop="16dp"
+                android:layout_width="9dp"
+                android:layout_height="9dp"
+                android:layout_gravity="center"
+                android:background="@drawable/grey_300_circle" />
+
+            <View
+                android:id="@+id/grey_300_circle_review"
+                android:layout_marginTop="16dp"
+                android:layout_width="6dp"
+                android:layout_height="6dp"
+                android:layout_gravity="center"
+                android:background="@drawable/grey_500_circle" />
+
+
+            <View
+                android:id="@+id/grey_500_circle_review"
+                android:layout_marginTop="16dp"
+                android:layout_width="3dp"
+                android:layout_height="3dp"
+                android:layout_gravity="center"
+                android:background="@drawable/accent_circle" />
+
+            <TextView
+                android:id="@+id/review_info_text"
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:text="@string/footer_user_stats"
+                style="@style/PoweredJaStyle"
+                android:paddingTop="24dp"
+                android:paddingBottom="16dp" />
+
+            <ImageView
+                android:contentDescription="@string/yabu_astronaut"
+                android:id="@+id/review_footer_graphic"
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:src="@drawable/ground_astronautmhdpi"/>
+
+            <include
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                layout="@layout/footer_powered" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
+
