@@ -124,25 +124,27 @@ public class ReadingRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerVie
         } else if (7 <= position && position <= mWikiExtracts.size() + 1) {
             currentPosition = position - 2;
         }
-        // Extract current extract
-        WikiExtract currentExtract = mWikiExtracts.get(currentPosition);
-        // Set title.
-        itemViewHolder.title.setText(currentExtract.title);
-        // Set text.
-        itemViewHolder.extract.setText(currentExtract.extract);
-        // Set the image views to gray scale
-        ColorMatrix matrix = new ColorMatrix();
-        matrix.setSaturation(0f);
-        ColorMatrixColorFilter filter = new ColorMatrixColorFilter(matrix);
-        if (currentExtract.thumbnail != null){
-            itemViewHolder.thumbnail.setColorFilter(filter);
-            // Set thumbnail with Glide.
-            GlideApp.with(mContext)
-                    .load(currentExtract.thumbnail.source)
-                    .transition(withCrossFade())
-                    .placeholder(R.color.color500Grey)
-                    .error(R.drawable.ground_astronautmhdpi)
-                    .into((TopCropImageView) itemViewHolder.thumbnail);
+        if (mWikiExtracts.size() != 0) {
+            // Extract current extract
+            WikiExtract currentExtract = mWikiExtracts.get(currentPosition);
+            // Set title.
+            itemViewHolder.title.setText(currentExtract.title);
+            // Set text.
+            itemViewHolder.extract.setText(currentExtract.extract);
+            // Set the image views to gray scale
+            ColorMatrix matrix = new ColorMatrix();
+            matrix.setSaturation(0f);
+            ColorMatrixColorFilter filter = new ColorMatrixColorFilter(matrix);
+            if (currentExtract.thumbnail != null) {
+                itemViewHolder.thumbnail.setColorFilter(filter);
+                // Set thumbnail with Glide.
+                GlideApp.with(mContext)
+                        .load(currentExtract.thumbnail.source)
+                        .transition(withCrossFade())
+                        .placeholder(R.color.color500Grey)
+                        .error(R.drawable.ground_astronautmhdpi)
+                        .into((TopCropImageView) itemViewHolder.thumbnail);
+            }
         }
     }
 

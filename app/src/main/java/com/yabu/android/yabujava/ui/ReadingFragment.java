@@ -1,28 +1,26 @@
 package com.yabu.android.yabujava.ui;
 
 import android.app.UiModeManager;
-import android.arch.lifecycle.Observer;
-import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.graphics.PorterDuff;
-import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Parcelable;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.LoaderManager;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.content.CursorLoader;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
-import android.view.OrientationEventListener;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
@@ -36,14 +34,15 @@ import com.bumptech.glide.util.ViewPreloadSizeProvider;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.yabu.android.yabujava.R;
 import org.parceler.Parcels;
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import jsondataclasses.WikiExtract;
+import jsondataclasses.WikiThumbnail;
 import repository.WikiExtractRepository;
+import sql.WikiExtractsContract.WikiExtractsEntry;
 import viewmodel.WikiExtractsViewModel;
 import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
 
@@ -51,12 +50,13 @@ import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOption
  * Reading list fragment, to be paired with ViewPager for tab slide animations in Main Activity.
  * This fragment displays a list of articles extracted from the JsonUtils API.
  */
-public class ReadingFragment extends Fragment {
+public class ReadingFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
 
     public static final String WIKI_EXTRACTS_KEY = "com.yabu.android.yabujava.WIKI_EXTRACTS_KEY";
 
     // The ViewModel to instantiate it through the provider.
     private WikiExtractsViewModel mModel;
+    private WikiExtractRepository mRepo;
     // The linear manager of the recycler view.
     private LinearLayoutManager mLinearLayoutManager;
     // init the wikiExtracts list.
@@ -74,72 +74,91 @@ public class ReadingFragment extends Fragment {
 
     private FirebaseAnalytics mFirebaseAnalytics;
 
+    private static final int REFRESH_SNACK_DELAY = 3000;
+    private static final int NO_CONNECTION_ALPHA_DELAY = 1500;
+    private static final int NO_CONNECTION_ALPHA_DURATION = 2000;
+    private static final int EXECUTOR_TERMINATION_WAIT = 800;
+
+    private static final int READING_CURSOR_LOADER_ID = 1;
+
     public ReadingFragment() {
         // Required empty public constructor
+    }
+
+    /**
+     * Create cursor loader with projection to get wiki extracts
+     */
+    @Override
+    public android.support.v4.content.Loader<Cursor> onCreateLoader(int id, Bundle args) {
+        // Set the query params for the definition query.
+        String[] projection = new String[]{WikiExtractsEntry._ID,
+                WikiExtractsEntry.COLUMN_PAGE_ID,
+                WikiExtractsEntry.COLUMN_TITLE,
+                WikiExtractsEntry.COLUMN_EXTRACT,
+                WikiExtractsEntry.COLUMN_THUMBNAIL};
+       return new CursorLoader(getContext(), WikiExtractsEntry.CONTENT_URI,
+                projection, null,
+                null,
+                null);
+    }
+
+    /**
+     * Set the views with the cursor data
+     */
+    @Override
+    public void onLoadFinished(android.support.v4.content.Loader<Cursor> loader, Cursor cursor) {
+        // Show the recycler view layout
+        showRecyclerView(mRootView);
+        mSwipeRefreshLayout.setRefreshing(false);
+        ArrayList<WikiExtract> oldExtracts = mWikiExtracts;
+        // clear the previous entries
+        mWikiExtracts.clear();
+
+        // Check for empty cursor
+        if (cursor != null && cursor.getCount() > 0){
+            cursor.moveToFirst();
+            do {
+                // Grab all the new data
+                int pageId = cursor.getInt(cursor.getColumnIndex(WikiExtractsEntry.COLUMN_PAGE_ID));
+                String title = cursor.getString(cursor.getColumnIndex(WikiExtractsEntry.COLUMN_TITLE));
+                String extract = cursor.getString(cursor.getColumnIndex(WikiExtractsEntry.COLUMN_EXTRACT));
+                String thumbnail = cursor.getString(cursor.getColumnIndex(WikiExtractsEntry.COLUMN_THUMBNAIL));
+
+                // Create the new wiki extract with data from database
+                WikiExtract wikiExtract =
+                        new WikiExtract(pageId, title, extract, new WikiThumbnail(thumbnail));
+                // Add the received wikiExtract list to the list hooked in the adapter.
+                mWikiExtracts.add(wikiExtract);
+            } while (cursor.moveToNext());
+
+            mAdapterReading.notifyDataSetChanged();
+            if (mWikiExtracts.containsAll(oldExtracts)) {
+                Snackbar.make(mRootView.findViewById(R.id.reading_recycler_parent),
+                        getString(R.string.articles_already_updated_snack), Snackbar.LENGTH_SHORT).show();
+            } else {
+                Snackbar.make(mRootView.findViewById(R.id.reading_recycler_parent),
+                        getString(R.string.articles_updated_snack),
+                        Snackbar.LENGTH_SHORT).show();
+            }
+        } else {
+            showOnlyNoInternetConnection(mRootView);
+        }
+    }
+
+    /**
+     * reset the loader
+     */
+    @Override
+    public void onLoaderReset(android.support.v4.content.Loader<Cursor> loader) {
+
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        // Set the view model and start data load as soon as the activity created.
-        if (savedInstanceState == null) {
-            prepareViewModel();
-        } else {
-            prepareViewModel();
-            mModel.refreshExecutor();
-        }
-    }
-
-    /**
-     * Helper function to init view model, data load and implement
-     * observer of LiveData changes to the UI.
-     */
-    private void prepareViewModel() {
-        // Get the ViewModel for the Reading list
-        mModel = ViewModelProviders.of(this)
-                .get(WikiExtractsViewModel.class);
-
-        // Create the observer which updates the UI. Whenever the data changes, the new pojo list
-        // is fed through and the UI can be updated.
-        Observer<ArrayList<WikiExtract>> observer = new Observer<ArrayList<WikiExtract>>() {
-            @Override
-            public void onChanged(@Nullable ArrayList<WikiExtract> wikiExtracts) {
-                // Check for null since addAll() accepts only non null
-                if (wikiExtracts != null && wikiExtracts.size() != 0) {
-                    // Show the recycler view layout
-                    showRecyclerView(mRootView);
-                    mSwipeRefreshLayout.setRefreshing(false);
-                    ArrayList<WikiExtract> oldExtracts = mWikiExtracts;
-                    // clear the previous entries
-                    mWikiExtracts.clear();
-                    // Add the received wikiExtract list to the list hooked in the adapter.
-                    //mWikiExtracts.addAll(wikiExtracts)
-                    mWikiExtracts.addAll(wikiExtracts);
-                    mAdapterReading.notifyDataSetChanged();
-                    if (mWikiExtracts.containsAll(oldExtracts)) {
-                        Snackbar.make(mRootView.findViewById(R.id.reading_recycler_parent),
-                                "Articles already updated.", Snackbar.LENGTH_SHORT).show();
-                    } else {
-                        Snackbar.make(mRootView.findViewById(R.id.reading_recycler_parent), "Articles updated.",
-                                Snackbar.LENGTH_SHORT).show();
-                    }
-                } else {
-                    // Show connection message
-                    if (mWikiExtracts.size() == 0) {
-                        showOnlyNoInternetConnection(mRootView);
-                    }
-                }
-            }
-        };
-
-        // Load the daily extracts from the main wiki page
-        // through a retrofit call and set the LiveData value.
-        mModel.loadExtracts(this.getContext());
-
-        // Observe the LiveData in the view model which will be set to the extracts,
-        // passing in the fragment as the LifecycleOwner and the observer created above.
-        mModel.extracts.observe(this, observer);
+        mRepo = WikiExtractRepository.getInstance();
+        mRepo.refreshExtracts(getContext());
     }
 
     @Override
@@ -158,6 +177,14 @@ public class ReadingFragment extends Fragment {
             // set the global list to this
             mWikiExtracts = Parcels.unwrap(wikiParcelable);
         }
+        if (mWikiExtracts != null) {
+            if (mWikiExtracts.size() == 0) {
+                getLoaderManager().initLoader(READING_CURSOR_LOADER_ID, null, this);
+            }
+        } else {
+            getLoaderManager().initLoader(READING_CURSOR_LOADER_ID, null, this);
+        }
+
 
         // init the linear layout manager.
         mLinearLayoutManager = new LinearLayoutManager(this.getContext());
@@ -261,8 +288,8 @@ public class ReadingFragment extends Fragment {
      */
     private void onRefreshSwipe(final View rootView, final ArrayList<WikiExtract> oldExtracts) {
         // Load the daily extracts from the main wiki page per user refresh
-        mModel.loadExtracts(this.getContext());
-
+        mRepo.refreshExtracts(getContext());
+        getLoaderManager().restartLoader(READING_CURSOR_LOADER_ID, null, this);
         // Post a delayed check whether articles are the same and notify.
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
@@ -272,14 +299,14 @@ public class ReadingFragment extends Fragment {
                 if (mWikiExtracts.containsAll(oldExtracts) && mWikiExtracts.size() != 0) {
                     mSwipeRefreshLayout.setRefreshing(false);
                     Snackbar.make(rootView.findViewById(R.id.reading_recycler_parent),
-                            "Articles already updated.", Snackbar.LENGTH_SHORT).show();
+                            getString(R.string.articles_already_updated_snack), Snackbar.LENGTH_SHORT).show();
                 } else if (mWikiExtracts.size() == 0) {
                     mSwipeRefreshLayout.setRefreshing(false);
                     Snackbar.make(rootView.findViewById(R.id.reading_recycler_parent),
-                            "No Articles loaded.", Snackbar.LENGTH_SHORT).show();
+                            getString(R.string.no_articles_loaded_snack), Snackbar.LENGTH_SHORT).show();
                 }
             }
-        }, 3000);
+        }, REFRESH_SNACK_DELAY);
     }
 
     /**
@@ -369,7 +396,7 @@ public class ReadingFragment extends Fragment {
         rootView.findViewById(R.id.reading_no_connection).setVisibility(View.VISIBLE);
         rootView.findViewById(R.id.reading_no_connection)
                 .findViewById(R.id.reading_no_connection_detail)
-                .animate().alpha(1f).setDuration(2000).setStartDelay(1500).start();
+                .animate().alpha(1f).setDuration(NO_CONNECTION_ALPHA_DURATION).setStartDelay(NO_CONNECTION_ALPHA_DELAY).start();
     }
 
     /**
@@ -386,7 +413,7 @@ public class ReadingFragment extends Fragment {
     public void onDestroy() {
         WikiExtractRepository.executor.shutdown();
         try {
-            if (!WikiExtractRepository.executor.awaitTermination(800, TimeUnit.MILLISECONDS)) {
+            if (!WikiExtractRepository.executor.awaitTermination(EXECUTOR_TERMINATION_WAIT, TimeUnit.MILLISECONDS)) {
                 WikiExtractRepository.executor.shutdownNow();
             }
         } catch (InterruptedException e) {
@@ -425,7 +452,7 @@ public class ReadingFragment extends Fragment {
                     if (url.isEmpty()) {
                         return new ArrayList<>();
                     } else {
-                        ArrayList<String> list = new ArrayList<String>();
+                        ArrayList<String> list = new ArrayList<>();
                         list.add(url);
                         return list;
                     }

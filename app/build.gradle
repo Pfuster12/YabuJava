@@ -14,7 +14,7 @@ android {
         release {
             keyAlias keystoreProperties['keyAlias']
             keyPassword keystoreProperties['keyPassword']
-            storeFile file(keystoreProperties['storeFile'])
+            storeFile file("$rootDir/keystore_yabu/yabu_java.jks")
             storePassword keystoreProperties['storePassword']
         }
     }

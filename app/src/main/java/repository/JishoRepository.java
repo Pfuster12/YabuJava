@@ -129,11 +129,9 @@ public class JishoRepository {
                                 kanjiDao.saveKanjiReadings(context, kanjiPairs, wikiExtract.title);
                                 return true;
                             } else {
-                                Log.e("JishoRepo", "Jisho Furigana Http request failed.");
                                 return false;
                             }
                         } catch (Exception e) {
-                            Log.e("JishoRepo", e.toString());
                             return false;
                         }
                     } else {
@@ -142,7 +140,6 @@ public class JishoRepository {
                 }
             });
         } catch (RejectedExecutionException e) {
-            Log.e("JishoReporefreshword", e.toString());
         }
 
         try {
@@ -152,7 +149,6 @@ public class JishoRepository {
                 return false;
             }
         } catch (Exception e) {
-            Logger.getLogger("JishoReporefreshword").warning(e.toString());
             return false;
         }
     }
@@ -209,7 +205,6 @@ public class JishoRepository {
                             kanjiDao.updateKanjiDefinition(context, kanji, id.first);
                         } else {
                             // Error in web call.
-                            Log.e("JishoRepo", "Jisho definition Http request failed.");
                         }
                     }
 
@@ -217,7 +212,6 @@ public class JishoRepository {
                 }
             });
         } catch (RejectedExecutionException e) {
-            Log.e("JishoRepoRefresh", e.toString());
         }
 
         try {
@@ -226,7 +220,6 @@ public class JishoRepository {
             } else
                 return -1;
         } catch (Exception e) {
-            Log.e("JishoRepoRefresh", e.toString());
             return -1;
         }
     }

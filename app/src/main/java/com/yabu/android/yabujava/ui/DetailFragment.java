@@ -22,7 +22,6 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.util.Pair;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.ActionBar;
-import android.support.v7.widget.RecyclerView;
 import android.text.Layout;
 import android.text.SpannableString;
 import android.text.method.LinkMovementMethod;
@@ -37,13 +36,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.yabu.android.yabujava.R;
 
 import org.parceler.Parcels;
-
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -90,6 +85,22 @@ public class DetailFragment extends BottomSheetDialogFragment {
     private SpannableString spannableString;
 
     private KanjisSQLDao kanjiDao = KanjisSQLDao.getInstance();
+
+    /*
+     * Constants
+     */
+    private static final int FURIGANA_DELAY = 500;
+    private static final int TEXT_ALPHA_DURATION = 500;
+    private static final int EXECUTOR_TERMINATION_WAIT = 800;
+    private static final double FURIGANA_WIDTH_FACTOR = 2.6;
+    private static final double FURIGANA_HEIGHT_FACTOR = 1.7;
+    private static final float INVERTED_BOTTOM_PADDING = 36f;
+    private static final float START_END_PADDING = 16f;
+    private static final float TOP_PADDING = 4f;
+    private static final float NORMAL_BOTTOM_PADDING = 20f;
+    private static final float LOW_TEXT_ALPHA_CLICK = 0.2f;
+    private static final float CALLOUT_MAX_WIDTH = 220f;
+    private static final float CALLOUT_CENTER_FACTOR = 1.2f;
 
     public DetailFragment() {
         // Required empty public constructor
@@ -143,7 +154,7 @@ public class DetailFragment extends BottomSheetDialogFragment {
         outState.putBoolean(DetailFragment.READ_BOOL_KEY, misRead);
 
         // Change pair list to map for parceler purposes
-        HashMap<List<Integer>, Kanji> map = new HashMap<List<Integer>, Kanji>();
+        HashMap<List<Integer>, Kanji> map = new HashMap<>();
         for (Pair<Pair<Integer, Integer>, Kanji> kanji : mKanjis) {
             ArrayList<Integer> rangeList = new ArrayList<>();
             rangeList.add(kanji.first.first);
@@ -257,7 +268,7 @@ public class DetailFragment extends BottomSheetDialogFragment {
               public void onClick(View v) {
                   if (misRead) {
                       misRead = false;
-                      readButton.animate().alpha(0.2f).setListener(new AnimatorListenerAdapter() {
+                      readButton.animate().alpha(LOW_TEXT_ALPHA_CLICK).setListener(new AnimatorListenerAdapter() {
                           @Override
                           public void onAnimationEnd(Animator animation) {
                               readButton.animate().alpha(1.0f).start();
@@ -269,7 +280,7 @@ public class DetailFragment extends BottomSheetDialogFragment {
                       setArticlesRead(misRead);
                   } else {
                       misRead = true;
-                      readButton.animate().alpha(0.2f).setListener(new AnimatorListenerAdapter() {
+                      readButton.animate().alpha(LOW_TEXT_ALPHA_CLICK).setListener(new AnimatorListenerAdapter() {
                           @Override
                           public void onAnimationEnd(Animator animation) {
                               readButton.animate().alpha(1.0f).start();
@@ -373,7 +384,7 @@ public class DetailFragment extends BottomSheetDialogFragment {
 
                     if (mKanjis.size() == 0) {
                         Snackbar.make( rootView.findViewById(R.id.detail_fragment_parent_layout),
-                                "No connection found to get readings.", Snackbar.LENGTH_SHORT).show();
+                                getString(R.string.no_connection_readings_snack), Snackbar.LENGTH_SHORT).show();
                     }
                 } else {
                     if (mKanjis.size() != 0) {
@@ -394,7 +405,7 @@ public class DetailFragment extends BottomSheetDialogFragment {
                         }
                     } else {
                         Snackbar.make( rootView.findViewById(R.id.detail_fragment_parent_layout),
-                                "No connection found to get readings.", Snackbar.LENGTH_SHORT).show();
+                                getString(R.string.no_connection_readings_snack), Snackbar.LENGTH_SHORT).show();
                     }
                 }
             }
@@ -550,7 +561,7 @@ public class DetailFragment extends BottomSheetDialogFragment {
             public void onAnimationEnd(Animator animation) {
                 furigana.setVisibility(View.GONE);
             }
-        }).alpha(0f).setStartDelay(500).start();
+        }).alpha(0f).setStartDelay(FURIGANA_DELAY).start();
     }
 
     /**
@@ -609,12 +620,12 @@ public class DetailFragment extends BottomSheetDialogFragment {
                     @Override
                     public void onClick(View v) {
                         // set animation
-                        detailsLink.animate().alpha(0.2f).
-                                setDuration(500).setListener(new AnimatorListenerAdapter() {
+                        detailsLink.animate().alpha(LOW_TEXT_ALPHA_CLICK).
+                                setDuration(TEXT_ALPHA_DURATION).setListener(new AnimatorListenerAdapter() {
 
                             @Override
                             public void onAnimationEnd(Animator animation, boolean isReverse) {
-                                detailsLink.animate().alpha(1.0f).setDuration(500).start();
+                                detailsLink.animate().alpha(1.0f).setDuration(TEXT_ALPHA_DURATION).start();
                             }
                         }).start();
 
@@ -845,10 +856,10 @@ public class DetailFragment extends BottomSheetDialogFragment {
         LinearLayout calloutBubble = rootView.findViewById(R.id.callout_bubble);
         // Set the middle bubble svg initially
         calloutBubble.setBackground(getContext().getDrawable(R.drawable.ic_callout_bubble_middle_shadow));
-        setPaddingForBottomCallout(rootView, 36f);
+        setPaddingForBottomCallout(rootView, INVERTED_BOTTOM_PADDING);
         // Set the bottom bubble margin to be gone
         calloutBubble.findViewById(R.id.callout_title_margin).setVisibility(View.GONE);
-        setMaxWidth(MiscUtils.getUtils().pxFromDp(getContext(), 220f), rootView);
+        setMaxWidth(MiscUtils.getUtils().pxFromDp(getContext(), CALLOUT_MAX_WIDTH), rootView);
 
         Kanji kanjiWord = kanji.second;
         if (kanjiWord != null) {
@@ -890,7 +901,7 @@ public class DetailFragment extends BottomSheetDialogFragment {
                     calloutBubble.findViewById(R.id.callout_title_margin).setVisibility(View.INVISIBLE);
 
                     // Set the padding to be less
-                    setPaddingForBottomCallout(rootView, 20f);
+                    setPaddingForBottomCallout(rootView, NORMAL_BOTTOM_PADDING);
                 } else {
                     calloutBubble.setBackground(
                             getContext().getDrawable(R.drawable.ic_callout_bubble_start_shadow));
@@ -917,13 +928,13 @@ public class DetailFragment extends BottomSheetDialogFragment {
                     calloutBubble.findViewById(R.id.callout_title_margin).setVisibility(View.INVISIBLE);
 
                     // Set the padding to be less
-                    setPaddingForBottomCallout(rootView, 20f);
+                    setPaddingForBottomCallout(rootView, NORMAL_BOTTOM_PADDING);
                 } else {
                     calloutBubble.setBackground(getContext().getDrawable(R.drawable.ic_callout_bubble_end_shadow));
                     calloutBubble.findViewById(R.id.callout_title_margin).setVisibility(View.GONE);
                 }
                 // Set the callout to be at the end of the text + some char widths to center it.
-                calloutBubble.setX(offsetPair.first - calloutWidth + (furiganaWidth / 2) + (charWidth / 1.2f));
+                calloutBubble.setX(offsetPair.first - calloutWidth + (furiganaWidth / 2) + (charWidth / CALLOUT_CENTER_FACTOR));
             }
 
             // Check if the bubble goes off the layout on top and is the middle callout
@@ -939,14 +950,14 @@ public class DetailFragment extends BottomSheetDialogFragment {
                 calloutBubble.findViewById(R.id.callout_title_margin).setVisibility(View.INVISIBLE);
 
                 // Set the padding to be less
-                setPaddingForBottomCallout(rootView, 20f);
+                setPaddingForBottomCallout(rootView, NORMAL_BOTTOM_PADDING);
             }
 
             // Check if callout is overflows at the bottom.
             if (calloutBubble.getY() + calloutBubble.getHeight() > rootView.findViewById(R.id.furigana_parent).getHeight()) {
                 float paddingHeight = (calloutBubble.getY() + calloutBubble.getHeight()) -
                         rootView.findViewById(R.id.furigana_parent).getHeight() +
-                        MiscUtils.getUtils().pxFromDp(getContext(), 16f);
+                        MiscUtils.getUtils().pxFromDp(getContext(), START_END_PADDING);
 
                 ViewGroup.LayoutParams params =
                         rootView.findViewById(R.id.detail_padding_bottom).getLayoutParams();
@@ -1008,9 +1019,9 @@ public class DetailFragment extends BottomSheetDialogFragment {
         LinearLayout calloutBubble = rootView.findViewById(R.id.callout_bubble);
 
         calloutBubble.findViewById(R.id.callout_details_link).setPaddingRelative(
-                MiscUtils.getUtils().pxFromDp(getContext(), ((Float) 16f)).intValue(),
-                MiscUtils.getUtils().pxFromDp(getContext(), ((Float) 4f)).intValue(),
-                MiscUtils.getUtils().pxFromDp(getContext(), ((Float) 16f)).intValue(),
+                MiscUtils.getUtils().pxFromDp(getContext(), ((Float) START_END_PADDING)).intValue(),
+                MiscUtils.getUtils().pxFromDp(getContext(), ((Float) TOP_PADDING)).intValue(),
+                MiscUtils.getUtils().pxFromDp(getContext(), ((Float) START_END_PADDING)).intValue(),
                 MiscUtils.getUtils().pxFromDp(getContext(), ((Float) bottomPadding)).intValue());
     }
 
@@ -1055,8 +1066,8 @@ public class DetailFragment extends BottomSheetDialogFragment {
         Integer furiganaHeight = bounds.height();
         Integer furiganaWidth = bounds.width();
 
-        TextView detailExtract = (TextView) mRootView.findViewById(R.id.detail_extract);
-        TextView detailTitle = (TextView) mRootView.findViewById(R.id.detail_title);
+        TextView detailExtract = mRootView.findViewById(R.id.detail_extract);
+        TextView detailTitle = mRootView.findViewById(R.id.detail_title);
 
         // Get the layout of the text view
         Layout textViewLayout = detailExtract.getLayout();
@@ -1115,7 +1126,7 @@ public class DetailFragment extends BottomSheetDialogFragment {
 
             // Get the mid coordinates of the kanji and add a
             // factor of mid of the text bound width to center it.
-            offsetX = startXCoordinates + ((endXCoordinates - startXCoordinates) / 2) - (furiganaWidth / 2.6);
+            offsetX = startXCoordinates + ((endXCoordinates - startXCoordinates) / 2) - (furiganaWidth / FURIGANA_WIDTH_FACTOR);
 
         /*
          * Check if furigana is off screen.
@@ -1135,7 +1146,7 @@ public class DetailFragment extends BottomSheetDialogFragment {
             }
 
             // Get the desired Y coordinate, a factor of the bounds height as a margin
-            offsetY = startYCoordinates - furiganaHeight - (furiganaHeight / 1.7);
+            offsetY = startYCoordinates - furiganaHeight - (furiganaHeight / FURIGANA_HEIGHT_FACTOR);
         }
 
         return new Pair<>(((Double) offsetX).floatValue(), offsetY.floatValue());
@@ -1147,7 +1158,7 @@ public class DetailFragment extends BottomSheetDialogFragment {
 
         JishoRepository.executor.shutdown();
         try {
-            if (!JishoRepository.executor.awaitTermination(800, TimeUnit.MILLISECONDS)) {
+            if (!JishoRepository.executor.awaitTermination(EXECUTOR_TERMINATION_WAIT, TimeUnit.MILLISECONDS)) {
                 JishoRepository.executor.shutdownNow();
             }
         } catch (InterruptedException e) {

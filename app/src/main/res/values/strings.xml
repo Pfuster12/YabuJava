@@ -11,6 +11,10 @@
     <string name="start_up_continue_no_sign">Click here to continue&#8230;</string>
 
     <!-- Main activity -->
+    <!-- Powered by text -->
+    <string name="articles_already_updated_snack">Articles already updated.</string>
+    <string name="articles_updated_snack">Articles updated.</string>
+    <string name="no_articles_loaded_snack">No Articles loaded.</string>
 
     <!-- Main screens tool bar titles -->
     <string name="reading_page_title">Reading</string>
@@ -34,6 +38,9 @@
     <!-- Main screens tool bar titles -->
     <string name="no_extract_text">Oh no! There is no text.</string>
 
+    <!-- Powered by text -->
+    <string name="no_connection_readings_snack">No connection found to get readings.</string>
+
     <!-- Tag for the bottom sheet fragment -->
     <string name="bottom_sheet_fragment_tag">Bottom Sheet Fragment</string>
     <string name="bottom_sheet_toolbar_title_prefix">Read about %1$s</string>
@@ -56,6 +63,8 @@
     <string name="JLPTN4" translatable="false">JLPT N4</string>
     <!-- JLPT N5 text-->
     <string name="JLPTN5" translatable="false">JLPT N5</string>
+
+    <string name="review_words_updated_snack">Review words are updated.</string>
 
     <!-- Jisho link text callout-->
     <string name="callout_link_details"><u>more&#8230;</u></string>
@@ -84,6 +93,15 @@
     <string name="no_words_big">There doesn\'t seem to be anything here&#8230;</string>
 
     <!--User Fragment-->
+
+    <string name="mon_entry">Mon</string>
+    <string name="tue_entry">Tue</string>
+    <string name="wed_entry">Wed</string>
+    <string name="thur_entry">Thu</string>
+    <string name="fri_entry">Fri</string>
+    <string name="sat_entry">Sat</string>
+    <string name="sun_entry">Sun</string>
+    <string name="no_data_chart">No Data!</string>
 
     <!-- User footer -->
     <string name="footer_user_stats">User stats. Keep breaking barriers!</string>

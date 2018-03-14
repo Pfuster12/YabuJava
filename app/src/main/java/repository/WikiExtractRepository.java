@@ -98,7 +98,7 @@ public class WikiExtractRepository {
     }
 
 
-    private boolean refreshExtracts(final Context context) {
+    public boolean refreshExtracts(final Context context) {
         Future<Boolean> future = null;
         // execute worker thread
         try {
@@ -124,14 +124,12 @@ public class WikiExtractRepository {
                             isSaved = saveExtracts(context, titleQuery);
                         } else {
                             // Error in web call.
-                            Log.e("WikiRepo", "Titles Http request failed");
                         }
                     }
                     return isSaved;
                 }
             });
         } catch (RejectedExecutionException e) {
-            Log.e("WikiRepoRefresh", e.toString());
         }
 
         try {
@@ -141,7 +139,6 @@ public class WikiExtractRepository {
                 return false;
             }
         } catch (Exception e) {
-            Log.e("WikiRepoRefresh", e.toString());
             return false;
         }
     }
@@ -166,10 +163,8 @@ public class WikiExtractRepository {
                     rows = wikiDao.saveWikiExtracts(context, jsonResponse.query.pages);
                 }
             } else {
-                Log.e("WikiRepo", "Extracts Http request failed");
             }
         } catch (IOException e) {
-            Log.e("WikiRepoSave", e.toString());
 
         }
 

@@ -60,6 +60,8 @@ public class ReviewWordsFragment extends Fragment implements MainActivity.OnPage
 
     private SharedPreferences mPrefs;
 
+    private static final int REFRESH_SNACK_DELAY = 3000;
+
     public ReviewWordsFragment() {
         // Required empty public constructor
     }
@@ -102,8 +104,6 @@ public class ReviewWordsFragment extends Fragment implements MainActivity.OnPage
                     mReviewKanjis.add(new Pair<>((Integer) keys.toArray()[i], (Kanji) kanjis.toArray()[i]));
                     i++;
                 }
-            } else {
-                // init an empty list
             }
         }
 
@@ -192,10 +192,10 @@ public class ReviewWordsFragment extends Fragment implements MainActivity.OnPage
                 if (mReviewKanjis.containsAll(oldReviewWords)) {
                     mSwipeRefreshLayout.setRefreshing(false);
                     Snackbar.make(rootView.findViewById(R.id.review_recycler_parent),
-                            "Review words are updated.", Snackbar.LENGTH_SHORT).show();
+                            getString(R.string.review_words_updated_snack), Snackbar.LENGTH_SHORT).show();
                 }
             }
-        }, 3000);
+        }, REFRESH_SNACK_DELAY);
     }
 
     /**

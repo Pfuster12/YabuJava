@@ -56,6 +56,14 @@ public class UserFragment extends Fragment implements MainActivity.OnPageSelecte
     private LineChart mLineChart;
     private static final String HAS_BEEN_REFRESHED = "com.yabu.android.yabujava.HAS_BEEN_REFRESHED";
 
+    private static final float LINE_WIDTH = 2f;
+    private static final float CIRCLE_RADIUS = 3f;
+    private static final float TEXT_SIZE = 10f;
+
+    private static final float PIE_TEXT_SIZE = 8f;
+    private static final float PIE_ROTATION = -240f;
+    private static final float HOLE_RADIUS = 48f;
+
     public UserFragment() {
         // Required empty public constructor
     }
@@ -65,6 +73,7 @@ public class UserFragment extends Fragment implements MainActivity.OnPageSelecte
         super.onActivityCreated(savedInstanceState);
 
         prepareViewModel();
+        ((MainActivity) getActivity()).mListener = this;
     }
 
     @Override
@@ -221,7 +230,13 @@ public class UserFragment extends Fragment implements MainActivity.OnPageSelecte
         }
 
         // the labels that should be drawn on the XAxis
-        final String[] quarters = new String[]{"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"};
+        final String[] quarters = new String[]{getString(R.string.sun_entry),
+                getString(R.string.mon_entry),
+                getString(R.string.tue_entry),
+                getString(R.string.wed_entry),
+                getString(R.string.thur_entry),
+                getString(R.string.fri_entry),
+                getString(R.string.sat_entry)};
 
         // format the axis labels to be the days
         IAxisValueFormatter formatter = new IAxisValueFormatter() {
@@ -241,8 +256,8 @@ public class UserFragment extends Fragment implements MainActivity.OnPageSelecte
         dataSet.setValueTextColor(ContextCompat.getColor(getContext(), R.color.color300Grey));
         dataSet.setFillColor(ContextCompat.getColor(getContext(), R.color.colorAccent));
         dataSet.setDrawFilled(true);
-        dataSet.setLineWidth(2f);
-        dataSet.setCircleRadius(3f);
+        dataSet.setLineWidth(LINE_WIDTH);
+        dataSet.setCircleRadius(CIRCLE_RADIUS);
         dataSet.setAxisDependency(YAxis.AxisDependency.LEFT);
         dataSet.setCircleColor(ContextCompat.getColor(getContext(), R.color.colorAccent));
         dataSet.setCircleColorHole(ContextCompat.getColor(getContext(), R.color.colorAccent));
@@ -263,7 +278,7 @@ public class UserFragment extends Fragment implements MainActivity.OnPageSelecte
         mLineChart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
         mLineChart.getXAxis().setDrawGridLines(false);
         mLineChart.getXAxis().setGranularity(1f);
-        mLineChart.getXAxis().setTextSize(10f);
+        mLineChart.getXAxis().setTextSize(TEXT_SIZE);
         mLineChart.getXAxis().setTextColor(ContextCompat.getColor(getContext(), R.color.color700Grey));
 
         // y axis format
@@ -271,7 +286,7 @@ public class UserFragment extends Fragment implements MainActivity.OnPageSelecte
         mLineChart.getAxisLeft().setDrawLabels(false);
         mLineChart.getAxisLeft().setAxisMinimum(0f);
         mLineChart.getAxisLeft().setGranularity(1f);
-        mLineChart.getAxisLeft().setTextSize(10f);
+        mLineChart.getAxisLeft().setTextSize(TEXT_SIZE);
         mLineChart.getAxisRight().setEnabled(false);
         // refresh chart
         mLineChart.invalidate();
@@ -359,15 +374,15 @@ public class UserFragment extends Fragment implements MainActivity.OnPageSelecte
         des.setText("");
         chart.setDescription(des);
         chart.setMaxAngle(180f);
-        chart.setHoleRadius(48f);
-        chart.setRotationAngle(-240f);
+        chart.setHoleRadius(HOLE_RADIUS);
+        chart.setRotationAngle(PIE_ROTATION);
         chart.setDrawEntryLabels(false);
         chart.getData().setValueTextColor(ContextCompat.getColor(getContext(), R.color.colorBackground));
-        chart.getData().setValueTextSize(8f);
-        chart.setNoDataText("No Data!");
+        chart.getData().setValueTextSize(PIE_TEXT_SIZE);
+        chart.setNoDataText(getString(R.string.no_data_chart));
         chart.setNoDataTextColor(ContextCompat.getColor(getContext(), R.color.color500Grey));
         chart.setTransparentCircleAlpha(0);
-        chart.setEntryLabelTextSize(8f);
+        chart.setEntryLabelTextSize(PIE_TEXT_SIZE);
         chart.getLegend().setEnabled(false);
         chart.highlightValue(0f, 0);
         chart.invalidate();

@@ -103,7 +103,6 @@ public class WikiExtractsSQLDao {
                 }
             });
         } catch (RejectedExecutionException e) {
-            Log.e("WikiExtractsDao", e.toString());
         }
 
         try {
@@ -113,7 +112,6 @@ public class WikiExtractsSQLDao {
                 return false;
             }
         } catch (Exception e) {
-            Log.e("WikiExtractsDao", e.toString());
             return false;
         }
     }
@@ -158,7 +156,6 @@ public class WikiExtractsSQLDao {
                 }
             });
         } catch (RejectedExecutionException e) {
-            Log.e("WikiExtractsDao", e.toString());
 
         }
 
@@ -169,7 +166,6 @@ public class WikiExtractsSQLDao {
                 return false;
             }
         } catch (Exception e) {
-            Log.e("WikiExtractsDao", e.toString());
             return false;
         }
     }
@@ -254,7 +250,6 @@ public class WikiExtractsSQLDao {
                 }
             });
         } catch (RejectedExecutionException e) {
-            Log.e("WikiExtractsDao", e.toString());
         }
 
         try {
@@ -264,7 +259,6 @@ public class WikiExtractsSQLDao {
                 return wikiExtracts;
             }
         } catch (Exception e) {
-            Log.e("WikiExtractsDao", e.toString());
             return wikiExtracts;
         }
     }

@@ -38,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
 
     public OnPageSelectedListener mListener;
 
+    private static final int EXECUTOR_TERMINATION_WAIT = 800;
+
     interface OnPageSelectedListener {
         void onPageSelected(int position);
     }
@@ -220,7 +222,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onDestroy() {
         executor.shutdown();
         try {
-            if (!executor.awaitTermination(800, TimeUnit.MILLISECONDS)) {
+            if (!executor.awaitTermination(EXECUTOR_TERMINATION_WAIT, TimeUnit.MILLISECONDS)) {
                 executor.shutdownNow();
             }
         } catch (InterruptedException e) {
@@ -250,7 +252,7 @@ public class MainActivity extends AppCompatActivity {
          */
         @Override
         public int getCount() {
-            return 3;
+            return fragmentCount;
         }
 
         /**

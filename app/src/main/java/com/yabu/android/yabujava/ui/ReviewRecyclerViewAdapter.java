@@ -33,6 +33,9 @@ public class ReviewRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView
     private OnEmptyListener mNotifyListener;
     private View mRootView;
 
+    private static final float LOW_TEXT_ALPHA_CLICK = 0.2f;
+    private static final int ALPHA_DURATION = 500;
+
     /*
     Types of view holders to return for the function itemViewType
     */
@@ -198,12 +201,12 @@ public class ReviewRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView
                 @Override
                 public void onClick(View v) {
                     // set animation
-                    itemViewHolder.detailsLink.animate().alpha(0.2f)
-                            .setDuration(500).setListener(new AnimatorListenerAdapter() {
+                    itemViewHolder.detailsLink.animate().alpha(LOW_TEXT_ALPHA_CLICK)
+                            .setDuration(ALPHA_DURATION).setListener(new AnimatorListenerAdapter() {
                         @Override
                         public void onAnimationEnd(Animator animation) {
                             itemViewHolder.detailsLink.animate().alpha(1.0f)
-                                    .setDuration(500).start();
+                                    .setDuration(ALPHA_DURATION).start();
                         }
                     }).start();
                     // Set the url with an intent.

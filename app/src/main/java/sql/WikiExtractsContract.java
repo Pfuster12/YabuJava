@@ -13,7 +13,7 @@ public class WikiExtractsContract {
     public static final String PATH_NAME = "wikiextracts";
 
     // Columns inner class for entries in Kanji tables.
-    static class WikiExtractsEntry implements BaseColumns {
+    public static class WikiExtractsEntry implements BaseColumns {
 
         public static final Uri CONTENT_URI = Uri.withAppendedPath(BASE_CONTENT_URI, PATH_NAME);
 

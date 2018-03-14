@@ -142,7 +142,6 @@ public class KanjisSQLDao {
                 }
             });
         } catch (RejectedExecutionException e) {
-            Log.e("KanjiSQLDao", e.toString());
         }
 
         // return the live data object.
@@ -153,7 +152,6 @@ public class KanjisSQLDao {
                 return kanji;
             }
         } catch (Exception e) {
-            Log.e("KanjiSQLDaoGetDef", e.toString());
             return kanji;
         }
     }
@@ -276,7 +274,6 @@ public class KanjisSQLDao {
                         }
                     });
         } catch (RejectedExecutionException e) {
-            Log.e("KanjiSQLDao", e.toString());
         }
 
         // return the live data object.
@@ -287,7 +284,6 @@ public class KanjisSQLDao {
                 return kanjiPairs;
             }
         } catch (Exception e) {
-            Log.e("KanjiSQLDaoGetReadings", e.toString());
             return kanjiPairs;
         }
     }
@@ -433,7 +429,6 @@ public class KanjisSQLDao {
                         }
                     });
         } catch (RejectedExecutionException e) {
-            Log.e("KanjiSQLDao", e.toString());
         }
 
         // return the live data object.
@@ -444,7 +439,6 @@ public class KanjisSQLDao {
                 return reviewWords;
             }
         } catch (Exception e) {
-            Log.e("KanjiSQLDao", e.toString());
             return reviewWords;
         }
     }
@@ -469,7 +463,6 @@ public class KanjisSQLDao {
                 }
             });
         } catch (RejectedExecutionException e) {
-            Log.e("KanjiSQLDao", e.toString());
         }
 
         try {
@@ -479,7 +472,6 @@ public class KanjisSQLDao {
                 return -1;
             }
         } catch (Exception e) {
-            Log.e("KanjiSQLDao", e.toString());
             return -1;
         }
     }

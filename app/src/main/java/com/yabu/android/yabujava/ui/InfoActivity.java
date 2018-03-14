@@ -18,6 +18,10 @@ import com.yabu.android.yabujava.R;
 
 public class InfoActivity extends AppCompatActivity {
 
+    private static final long PEEK_START_DURATION = 500;
+    private static final long PEEK_END_DURATION = 280;
+    private static final int PEEK_DELAY_DURATION = 900;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -98,7 +102,7 @@ public class InfoActivity extends AppCompatActivity {
                 ObjectAnimator xTranslate = ObjectAnimator.ofInt(pager, "scrollX", x);
                 ObjectAnimator yTranslate = ObjectAnimator.ofInt(pager, "scrollY", y);
                 AnimatorSet animators = new AnimatorSet();
-                animators.setDuration(500L);
+                animators.setDuration(PEEK_START_DURATION);
                 animators.playTogether(xTranslate, yTranslate);
                 animators.addListener(new Animator.AnimatorListener() {
                     @Override
@@ -114,7 +118,7 @@ public class InfoActivity extends AppCompatActivity {
                         ObjectAnimator x2Translate = ObjectAnimator.ofInt(pager, "scrollX", x2);
                         ObjectAnimator y2Translate = ObjectAnimator.ofInt(pager, "scrollY", y2);
                         AnimatorSet animators2 = new AnimatorSet();
-                        animators2.setDuration(280L);
+                        animators2.setDuration(PEEK_END_DURATION);
                         animators2.playTogether(x2Translate, y2Translate);
                         animators2.start();
                     }
@@ -131,7 +135,7 @@ public class InfoActivity extends AppCompatActivity {
                 });
                 animators.start();
             }
-        }, 900);
+        }, PEEK_DELAY_DURATION);
     }
 
     class InfoPagerAdapter extends FragmentPagerAdapter {
