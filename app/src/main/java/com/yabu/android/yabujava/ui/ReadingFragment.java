@@ -171,18 +171,17 @@ public class ReadingFragment extends Fragment implements LoaderManager.LoaderCal
         if (savedInstanceState == null) {
             //
             mWikiExtracts = new ArrayList<>();
+            getLoaderManager().initLoader(READING_CURSOR_LOADER_ID, null, this);
         } else {
             // if not grab the list from the saved inst state
             Parcelable wikiParcelable = savedInstanceState.getParcelable(ReadingFragment.WIKI_EXTRACTS_KEY);
             // set the global list to this
             mWikiExtracts = Parcels.unwrap(wikiParcelable);
-        }
-        if (mWikiExtracts != null) {
-            if (mWikiExtracts.size() == 0) {
-                getLoaderManager().initLoader(READING_CURSOR_LOADER_ID, null, this);
+            if (mWikiExtracts != null) {
+                if (mWikiExtracts.size() == 0) {
+                    getLoaderManager().restartLoader(READING_CURSOR_LOADER_ID, null, this);
+                }
             }
-        } else {
-            getLoaderManager().initLoader(READING_CURSOR_LOADER_ID, null, this);
         }
 
 

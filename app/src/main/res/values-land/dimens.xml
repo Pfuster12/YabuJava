@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Collapsing app bar height in detail screen -->
+    <dimen name="collapsing_app_bar_height">180dp</dimen>
+</resources>
