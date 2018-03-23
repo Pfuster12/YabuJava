@@ -5,6 +5,7 @@ import android.app.UiModeManager;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
@@ -98,6 +99,15 @@ public class UserFragment extends Fragment implements MainActivity.OnPageSelecte
 
         setLineChart(rootView);
         setPieChart(rootView);
+
+        TextView startAgain = rootView.findViewById(R.id.start_up_again_see);
+        startAgain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), StartUpActivity.class);
+                startActivity(intent);
+            }
+        });
         // Return the inflated view to complete the onCreate process.
         return rootView;
     }

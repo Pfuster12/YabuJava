@@ -10,6 +10,9 @@
     <!-- Start up Continue without Sign Up -->
     <string name="start_up_continue_no_sign">Click here to continue&#8230;</string>
 
+    <!-- Start up Sign Up -->
+    <string name="start_up_again">Show welcome screen again?</string>
+
     <!-- Main activity -->
     <!-- Powered by text -->
     <string name="articles_already_updated_snack">Articles already updated.</string>
@@ -168,9 +171,9 @@
     <!--screen text 3-->
     <string name="info_screen_text_3">See Kanji readings and definitions while reading a tap away.</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="appwidget_text">EXAMPLE</string>
+    <string name="ad_mob_id">ca-app-pub-1865281874438418/9120172081</string>
+
+
     <string name="add_widget">Add widget</string>
 
     <!-- Attributions -->

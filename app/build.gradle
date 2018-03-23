@@ -48,19 +48,19 @@ dependencies {
     implementation 'com.android.support:support-v4:26.1.0'
     implementation 'com.android.support:recyclerview-v7:26.1.0'
     // Google ad
-    implementation 'com.google.android.gms:play-services-ads:11.8.0'
+    implementation 'com.google.android.gms:play-services-ads:12.0.0'
     // charts api
     implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
     // Glide dependency
     implementation 'com.github.bumptech.glide:glide:4.3.0'
-    implementation 'com.google.firebase:firebase-core:11.8.0'
+    implementation 'com.google.firebase:firebase-core:12.0.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.3.0'
     implementation('com.github.bumptech.glide:recyclerview-integration:4.3.0') {
         // Excludes the support library because it's already included by Glide.
         transitive = false
     }
     // Lifecycle, LiveData and ViewModel components
-    implementation 'android.arch.lifecycle:extensions:1.1.0'
+    implementation 'android.arch.lifecycle:extensions:1.1.1'
     // Retrofit library dependencies
     implementation 'com.squareup.retrofit2:retrofit:2.3.0'
     implementation 'com.squareup.retrofit2:converter-moshi:2.3.0'
